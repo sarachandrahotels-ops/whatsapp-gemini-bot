@@ -1,3 +1,69 @@
 Flask==3.0.0
 requests==2.31.0
 gunicorn==21.2.0
+```
+13. Click **"Commit changes"**
+
+### **Step 3: Deploy on Railway**
+
+1. Go back to **Railway.app**
+2. Click **"Deploy from GitHub repo"**
+3. Select your `whatsapp-bot` repository
+4. Click **"Deploy Now"**
+
+5. Click on your deployment
+6. Go to **"Variables"** tab
+7. Click **"New Variable"** and add each one:
+   - `VERIFY_TOKEN` = `mytoken123`
+   - `WHATSAPP_TOKEN` = (your WhatsApp token)
+   - `PHONE_NUMBER_ID` = (your phone number ID)
+   - `GEMINI_API_KEY` = (your Gemini API key)
+   - `PORT` = `8080`
+
+8. Go to **"Settings"** tab
+9. Scroll to **"Networking"**
+10. Click **"Generate Domain"**
+11. **Copy your domain URL** (e.g., `something.up.railway.app`)
+
+---
+
+## **Alternative: Glitch.com (Even Easier - No GitHub Needed!)**
+
+If Railway asks for a card too, use Glitch:
+
+### **Step 1: Use Glitch.com**
+
+1. Go to [glitch.com](https://glitch.com)
+2. Click **"Sign up"** (use GitHub or email)
+3. Click **"New Project"** → **"glitch-hello-python"**
+
+### **Step 2: Add Your Code**
+
+1. In the left panel, click on **`hello.py`**
+2. **Delete all the code** in that file
+3. Copy and paste the Python code from my artifact above
+4. Rename the file: Click the filename → rename to `app.py`
+
+5. Click **`.env`** file in left panel
+6. Add your environment variables:
+```
+VERIFY_TOKEN=mytoken123
+WHATSAPP_TOKEN=your_whatsapp_token_here
+PHONE_NUMBER_ID=your_phone_number_id_here
+GEMINI_API_KEY=your_gemini_api_key_here
+PORT=8080
+```
+
+7. Click **`requirements.txt`** in left panel
+8. Replace everything with:
+```
+Flask==3.0.0
+requests==2.31.0
+gunicorn==21.2.0
+```
+
+9. Create a new file: Click **"New File"**
+10. Name it: `Procfile` (no extension)
+11. Add this line:
+```
+web: gunicorn app:app
